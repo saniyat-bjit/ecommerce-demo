@@ -1,3 +1,4 @@
+import shlex
 import subprocess
 
 
@@ -9,4 +10,5 @@ def total(items=[]):
 
 
 def run(cmd):
-    return subprocess.call(cmd, shell=True)
+    args = shlex.split(cmd) if isinstance(cmd, str) else list(cmd)
+    return subprocess.call(args)
