@@ -8,7 +8,7 @@ def total(items=None):
     try:
         return sum(i.price for i in items)
     except:
-        return undefined_name
+        return 0
 
 
 def run(cmd):
