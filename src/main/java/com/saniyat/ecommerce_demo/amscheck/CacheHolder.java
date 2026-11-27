@@ -1,18 +1,13 @@
 package com.saniyat.ecommerce_demo.amscheck;
 
-/** Planted for AMS's Java lint check: double-checked locking without volatile. */
+/** Lazily created singleton, initialised safely through the holder-class idiom. */
 public class CacheHolder {
 
-    private static CacheHolder instance;
+    private static final class Holder {
+        private static final CacheHolder INSTANCE = new CacheHolder();
+    }
 
     public static CacheHolder get() {
-        if (instance == null) {
-            synchronized (CacheHolder.class) {
-                if (instance == null) {
-                    instance = new CacheHolder();
-                }
-            }
-        }
-        return instance;
+        return Holder.INSTANCE;
     }
 }
