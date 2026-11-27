@@ -17,7 +17,7 @@ public class OrderLookup {
         try (Connection connection = DriverManager.getConnection(url);
                 Statement statement = connection.createStatement();
                 ResultSet rows = statement.executeQuery("SELECT COUNT(*) FROM orders")) {
-            rows.next();
+            rows.next(); // NOPMD - the count query always returns one row
             return rows.getInt(1);
         }
     }
