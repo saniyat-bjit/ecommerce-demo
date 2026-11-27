@@ -2,7 +2,9 @@ import shlex
 import subprocess
 
 
-def total(items=[]):
+def total(items=None):
+    if items is None:
+        items = []
     try:
         return sum(i.price for i in items)
     except:
